@@ -518,7 +518,7 @@ def get_all_js_library_funcs(temp_files):
     # Temporarily define INCLUDE_FULL_LIBRARY since we want a full list
     # of all available JS library functions.
     shared.Settings.INCLUDE_FULL_LIBRARY = True
-    shared.Settings.CALCULATE_ONLY = True
+    shared.Settings.ONLY_CALCUALTE_JS_SYMBOLS = True
     emscripten.generate_struct_info()
     glue, forwarded_data = emscripten.compile_settings(temp_files)
     forwarded_json = json.loads(forwarded_data)
@@ -533,7 +533,7 @@ def get_all_js_library_funcs(temp_files):
         # but it currently does.  Remove this once we fix wasm-ld.
         library_fns_list.append('__wasi_' + name)
   finally:
-    shared.Settings.CALCULATE_ONLY = False
+    shared.Settings.ONLY_CALCUALTE_JS_SYMBOLS = False
     shared.Settings.INCLUDE_FULL_LIBRARY = old_full
 
   # Some of these functions are actually not JS functions at all but fallbacks
@@ -1218,7 +1218,7 @@ There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR P
       shared.Settings.STACK_OVERFLOW_CHECK = 2
 
     if shared.Settings.LLD_REPORT_UNDEFINED:
-      # Reporting undefined symbols at wasm-ld time requires us to know if we have `main` function
+      # Reporting undefined symbols at wasm-ld time requires us to know if we have a `main` function
       # or not.
       shared.Settings.IGNORE_MISSING_MAIN = 0
 

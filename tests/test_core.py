@@ -8822,13 +8822,10 @@ NODEFS is no longer included by default; build with -lnodefs.js
     # building library code that has no main.
     # TODO(sbc): Simplify the code by making this an opt-in feature.
     # https://github.com/emscripten-core/emscripten/issues/9640
-
     src = '''
     #include <emscripten.h>
     EMSCRIPTEN_KEEPALIVE void foo() {}
     '''
-    # Clear out the default tests settings since they include IGNORE_MISSING_MAIN=0
-    self.settings_mods = {}
     self.build(src, self.get_dir(), 'test.c')
 
   def test_fpic_static(self):
@@ -8872,8 +8869,6 @@ NODEFS is no longer included by default; build with -lnodefs.js
     self.do_run_in_out_file_test('tests', 'core', 'test_get_exported_function')
 
   def test_auto_detect_main(self):
-    # Clear out the default tests settings since they include IGNORE_MISSING_MAIN=0
-    self.settings_mods = {}
     self.do_run_in_out_file_test('tests', 'core', 'test_ctors_no_main')
 
     # Disabling IGNORE_MISSING_MAIN should cause link to fail due to missing main

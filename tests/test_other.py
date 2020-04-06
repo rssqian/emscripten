@@ -10241,8 +10241,7 @@ int main () {
     self.assertLess(abs(changed - 5795), 150)
 
   def test_llvm_includes(self):
-    create_test_file('src.c', '#include <stdatomic.h>')
-    run_process([PYTHON, EMCC, '-c', 'src.c'])
+    self.build('#include <stdatomic.h>', self.get_dir(), 'atomics.c')
 
   def test_mmap_and_munmap(self):
     emcc_args = []
