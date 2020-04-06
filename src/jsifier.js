@@ -263,7 +263,7 @@ function JSify(data, functionsOnly) {
         Functions.libraryFunctions[finalName] = 1;
       }
 
-      if (ONLY_CALCUALTE_JS_SYMBOLS)
+      if (ONLY_CALC_JS_SYMBOLS)
         return '';
 
       var postsetId = ident + '__postset';

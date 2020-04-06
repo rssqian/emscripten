@@ -192,4 +192,4 @@ var EXCEPTION_HANDLING = 0;
 // Used internally when running the JS compiler simply to generate list of all
 // JS symbols. This is used by LLD_REPORT_UNDEFINED to generate a list of all
 // JS library symbols.
-var ONLY_CALCUALTE_JS_SYMBOLS = 0;
+var ONLY_CALC_JS_SYMBOLS = 0;
