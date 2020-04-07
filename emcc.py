@@ -2323,8 +2323,6 @@ There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR P
           if shared.Settings.LLD_REPORT_UNDEFINED and shared.Settings.ERROR_ON_UNDEFINED_SYMBOLS:
             all_externals = get_all_js_library_funcs(misc_temp_files)
             log_time('JS symbol generation')
-            # TODO(sbc): Remove this after https://reviews.llvm.org/D77358
-            all_externals += ['emscripten_longjmp_jmpbuf']
           final = shared.Building.link_lld(linker_inputs, DEFAULT_FINAL, all_external_symbols=all_externals)
         else:
           final = shared.Building.link(linker_inputs, DEFAULT_FINAL, force_archive_contents=force_archive_contents, just_calculate=just_calculate)
